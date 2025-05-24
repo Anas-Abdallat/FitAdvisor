@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Find Course";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Adjust layout as needed
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("FindACourseByNameTable", "RegistraionInstructor", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.Label("courseId", "Course ID:", htmlAttributes: new { @class = "control-label" })
+        @Html.TextBox("courseId", null, new { @class = "form-control" })
+        @Html.ValidationMessage("courseId", "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Display" class="btn btn-primary" />
+    </div>
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+
+@if (Model != null)
+{
+    <h3>Course Details</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Course Hours</th>
+                <th>Course DEPARTMENT</th>
+                <th>Course Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.ID</td>
+                <td>@Model.NAME</td>
+                <td>@Model.CREDIT_HOURS</td>
+                <td>@Model.DEPARTMENT</td>
+                <td>@Model.COURSE_NUMBER</td>
+            </tr>
+        </tbody>
+    </table>
+}

@@ -1,0 +1,34 @@
+﻿@model List<FitAdvisor.Models.MESSAGE>
+
+<h2>Messages</h2>
+
+@if (Model.Count == 0)
+{
+    <p>No Message found.</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Student Name</th>
+            <th>Time</th>
+            <th>Message</th>
+            <th>Reply</th>
+            <th></th>
+        </tr>
+        @foreach (var instructor in Model)
+        {
+            <tr>
+                <td>@instructor.ID</td>
+                <td>@instructor.STUDENT.FULL_NAME</td>
+                <td>@instructor.TIME</td>
+                <td>@instructor.MESSAGE1</td>
+                <td>@instructor.Reply</td>
+                <td>
+                    @Html.ActionLink("Reply", "ReplyMessage", new { id = instructor.ID }) |
+                </td>
+            </tr>
+        }
+    </table>
+}

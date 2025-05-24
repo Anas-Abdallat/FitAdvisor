@@ -1,0 +1,25 @@
+﻿@model FitAdvisor.Models.INSTRUCTOR_COURSE
+
+<h2>Edit Instructor</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.ID_INSTRUCTOR)
+    @Html.HiddenFor(model => model.ID_COURSE)
+    @Html.HiddenFor(model => model.INSTRUCTOR)
+    @Html.HiddenFor(model => model.COURSE)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.INSTRUCTOR_NOTE)
+        @Html.TextBoxFor(model => model.INSTRUCTOR_NOTE, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

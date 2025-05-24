@@ -1,0 +1,1010 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FitAdvisorDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="COMMUNITY_SERVICE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="HOURS_PASSED" Type="int" />
+          <Property Name="ACTIVITY" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_INSTRUCTOR" Type="int" Nullable="false" />
+          <Property Name="ID_STUDENT" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COURSE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CREDIT_HOURS" Type="int" Nullable="false" />
+          <Property Name="DEPARTMENT" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="COURSE_NUMBER" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EXAMS_SCHEDULE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ID_STUDENT" Type="int" Nullable="false" />
+          <Property Name="ID_COURSE" Type="int" Nullable="false" />
+          <Property Name="TIME" Type="datetime" />
+          <Property Name="COURSE_NAME" Type="nchar" MaxLength="10" />
+          <Property Name="CLASS_NUMBER" Type="int" />
+        </EntityType>
+        <EntityType Name="HOMEWORK">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ASSIGNMENT" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_INSTRUCTOR" Type="int" Nullable="false" />
+          <Property Name="ID_STUDENT" Type="int" Nullable="false" />
+          <Property Name="ID_COURSE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INSTRUCTOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FULL_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="INSTRUCTOR_NUMBER" Type="int" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INSTRUCTOR_COURSE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_INSTRUCTOR" Type="int" />
+          <Property Name="ID_COURSE" Type="int" />
+          <Property Name="INSTRUCTOR_NOTE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MESSAGE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_STUDENT" Type="int" Nullable="false" />
+          <Property Name="ID_INSTRUCTOR" Type="int" Nullable="false" />
+          <Property Name="MESSAGE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TIME" Type="datetime" Nullable="false" />
+          <Property Name="Reply" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NOTE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOTES" Type="nchar" MaxLength="10" />
+          <Property Name="TIME" Type="datetime" Nullable="false" />
+          <Property Name="ID_INSTRUCTOR" Type="int" Nullable="false" />
+          <Property Name="ID_STUDENT" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STUDENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FULL_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DEPARTMENT" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="STUDENT_NUMBER" Type="int" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STUDENT_COURSE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_STUDENT" Type="int" />
+          <Property Name="ID_COURSE" Type="int" />
+          <Property Name="MAEKS" Type="int" Nullable="false" />
+          <Property Name="ABSSENCE" Type="int" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="255" />
+          <Property Name="STUDENT_ID" Type="int" />
+          <Property Name="INSTRUCTOR_ID" Type="int" />
+        </EntityType>
+        <Association Name="FK__COMMUNITY__ID_IN__6FE99F9F">
+          <End Role="INSTRUCTOR" Type="Self.INSTRUCTOR" Multiplicity="1" />
+          <End Role="COMMUNITY_SERVICE" Type="Self.COMMUNITY_SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMMUNITY_SERVICE">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COMMUNITY__ID_ST__70DDC3D8">
+          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="1" />
+          <End Role="COMMUNITY_SERVICE" Type="Self.COMMUNITY_SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMMUNITY_SERVICE">
+              <PropertyRef Name="ID_STUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EXAMS_SCH__ID_CO__73BA3083">
+          <End Role="COURSE" Type="Self.COURSE" Multiplicity="1" />
+          <End Role="EXAMS_SCHEDULE" Type="Self.EXAMS_SCHEDULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EXAMS_SCHEDULE">
+              <PropertyRef Name="ID_COURSE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EXAMS_SCH__ID_ST__74AE54BC">
+          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="1" />
+          <End Role="EXAMS_SCHEDULE" Type="Self.EXAMS_SCHEDULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EXAMS_SCHEDULE">
+              <PropertyRef Name="ID_STUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOMEWORK__ID_COU__797309D9">
+          <End Role="COURSE" Type="Self.COURSE" Multiplicity="1" />
+          <End Role="HOMEWORK" Type="Self.HOMEWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOMEWORK">
+              <PropertyRef Name="ID_COURSE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOMEWORK__ID_INS__778AC167">
+          <End Role="INSTRUCTOR" Type="Self.INSTRUCTOR" Multiplicity="1" />
+          <End Role="HOMEWORK" Type="Self.HOMEWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOMEWORK">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOMEWORK__ID_STU__787EE5A0">
+          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="1" />
+          <End Role="HOMEWORK" Type="Self.HOMEWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOMEWORK">
+              <PropertyRef Name="ID_STUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INSTRUCTO__ID_CO__02084FDA">
+          <End Role="COURSE" Type="Self.COURSE" Multiplicity="0..1" />
+          <End Role="INSTRUCTOR_COURSE" Type="Self.INSTRUCTOR_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INSTRUCTOR_COURSE">
+              <PropertyRef Name="ID_COURSE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INSTRUCTO__ID_IN__02FC7413">
+          <End Role="INSTRUCTOR" Type="Self.INSTRUCTOR" Multiplicity="0..1" />
+          <End Role="INSTRUCTOR_COURSE" Type="Self.INSTRUCTOR_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INSTRUCTOR_COURSE">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MESSAGE__ID_INST__7E37BEF6">
+          <End Role="INSTRUCTOR" Type="Self.INSTRUCTOR" Multiplicity="1" />
+          <End Role="MESSAGE" Type="Self.MESSAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MESSAGE">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MESSAGE__ID_STUD__7F2BE32F">
+          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="1" />
+          <End Role="MESSAGE" Type="Self.MESSAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MESSAGE">
+              <PropertyRef Name="ID_STUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NOTE__ID_INSTRUC__7C4F7684">
+          <End Role="INSTRUCTOR" Type="Self.INSTRUCTOR" Multiplicity="1" />
+          <End Role="NOTE" Type="Self.NOTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NOTE">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NOTE__ID_STUDENT__7D439ABD">
+          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="1" />
+          <End Role="NOTE" Type="Self.NOTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NOTE">
+              <PropertyRef Name="ID_STUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENT_C__ID_CO__5EBF139D">
+          <End Role="COURSE" Type="Self.COURSE" Multiplicity="0..1" />
+          <End Role="STUDENT_COURSE" Type="Self.STUDENT_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STUDENT_COURSE">
+              <PropertyRef Name="ID_COURSE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENT_C__ID_ST__5FB337D6">
+          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="0..1" />
+          <End Role="STUDENT_COURSE" Type="Self.STUDENT_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STUDENT_COURSE">
+              <PropertyRef Name="ID_STUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__INSTRUCTO__6383C8BA">
+          <End Role="INSTRUCTOR" Type="Self.INSTRUCTOR" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="INSTRUCTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__STUDENT_I__628FA481">
+          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FitAdvisorDBModelStoreContainer">
+          <EntitySet Name="COMMUNITY_SERVICE" EntityType="Self.COMMUNITY_SERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COURSE" EntityType="Self.COURSE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EXAMS_SCHEDULE" EntityType="Self.EXAMS_SCHEDULE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOMEWORK" EntityType="Self.HOMEWORK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INSTRUCTOR" EntityType="Self.INSTRUCTOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INSTRUCTOR_COURSE" EntityType="Self.INSTRUCTOR_COURSE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MESSAGE" EntityType="Self.MESSAGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOTE" EntityType="Self.NOTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUDENT" EntityType="Self.STUDENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUDENT_COURSE" EntityType="Self.STUDENT_COURSE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__COMMUNITY__ID_IN__6FE99F9F" Association="Self.FK__COMMUNITY__ID_IN__6FE99F9F">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTOR" />
+            <End Role="COMMUNITY_SERVICE" EntitySet="COMMUNITY_SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COMMUNITY__ID_ST__70DDC3D8" Association="Self.FK__COMMUNITY__ID_ST__70DDC3D8">
+            <End Role="STUDENT" EntitySet="STUDENT" />
+            <End Role="COMMUNITY_SERVICE" EntitySet="COMMUNITY_SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EXAMS_SCH__ID_CO__73BA3083" Association="Self.FK__EXAMS_SCH__ID_CO__73BA3083">
+            <End Role="COURSE" EntitySet="COURSE" />
+            <End Role="EXAMS_SCHEDULE" EntitySet="EXAMS_SCHEDULE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EXAMS_SCH__ID_ST__74AE54BC" Association="Self.FK__EXAMS_SCH__ID_ST__74AE54BC">
+            <End Role="STUDENT" EntitySet="STUDENT" />
+            <End Role="EXAMS_SCHEDULE" EntitySet="EXAMS_SCHEDULE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOMEWORK__ID_COU__797309D9" Association="Self.FK__HOMEWORK__ID_COU__797309D9">
+            <End Role="COURSE" EntitySet="COURSE" />
+            <End Role="HOMEWORK" EntitySet="HOMEWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOMEWORK__ID_INS__778AC167" Association="Self.FK__HOMEWORK__ID_INS__778AC167">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTOR" />
+            <End Role="HOMEWORK" EntitySet="HOMEWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOMEWORK__ID_STU__787EE5A0" Association="Self.FK__HOMEWORK__ID_STU__787EE5A0">
+            <End Role="STUDENT" EntitySet="STUDENT" />
+            <End Role="HOMEWORK" EntitySet="HOMEWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INSTRUCTO__ID_CO__02084FDA" Association="Self.FK__INSTRUCTO__ID_CO__02084FDA">
+            <End Role="COURSE" EntitySet="COURSE" />
+            <End Role="INSTRUCTOR_COURSE" EntitySet="INSTRUCTOR_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INSTRUCTO__ID_IN__02FC7413" Association="Self.FK__INSTRUCTO__ID_IN__02FC7413">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTOR" />
+            <End Role="INSTRUCTOR_COURSE" EntitySet="INSTRUCTOR_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MESSAGE__ID_INST__7E37BEF6" Association="Self.FK__MESSAGE__ID_INST__7E37BEF6">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTOR" />
+            <End Role="MESSAGE" EntitySet="MESSAGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MESSAGE__ID_STUD__7F2BE32F" Association="Self.FK__MESSAGE__ID_STUD__7F2BE32F">
+            <End Role="STUDENT" EntitySet="STUDENT" />
+            <End Role="MESSAGE" EntitySet="MESSAGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NOTE__ID_INSTRUC__7C4F7684" Association="Self.FK__NOTE__ID_INSTRUC__7C4F7684">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTOR" />
+            <End Role="NOTE" EntitySet="NOTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NOTE__ID_STUDENT__7D439ABD" Association="Self.FK__NOTE__ID_STUDENT__7D439ABD">
+            <End Role="STUDENT" EntitySet="STUDENT" />
+            <End Role="NOTE" EntitySet="NOTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENT_C__ID_CO__5EBF139D" Association="Self.FK__STUDENT_C__ID_CO__5EBF139D">
+            <End Role="COURSE" EntitySet="COURSE" />
+            <End Role="STUDENT_COURSE" EntitySet="STUDENT_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENT_C__ID_ST__5FB337D6" Association="Self.FK__STUDENT_C__ID_ST__5FB337D6">
+            <End Role="STUDENT" EntitySet="STUDENT" />
+            <End Role="STUDENT_COURSE" EntitySet="STUDENT_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERS__INSTRUCTO__6383C8BA" Association="Self.FK__USERS__INSTRUCTO__6383C8BA">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTOR" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERS__STUDENT_I__628FA481" Association="Self.FK__USERS__STUDENT_I__628FA481">
+            <End Role="STUDENT" EntitySet="STUDENT" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FitAdvisorDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="COURSE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CREDIT_HOURS" Type="Int32" Nullable="false" />
+          <Property Name="DEPARTMENT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="COURSE_NUMBER" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="INSTRUCTOR_COURSE" Relationship="Self.FK__INSTRUCTO__ID_CO__619B8048" FromRole="COURSE" ToRole="INSTRUCTOR_COURSE" />
+          <NavigationProperty Name="STUDENT_COURSE" Relationship="Self.FK__STUDENT_C__ID_CO__5EBF139D" FromRole="COURSE" ToRole="STUDENT_COURSE" />
+          <NavigationProperty Name="EXAMS_SCHEDULE" Relationship="FitAdvisorDBModel.FK__EXAMS_SCH__ID_CO__73BA3083" FromRole="COURSE" ToRole="EXAMS_SCHEDULE" />
+          <NavigationProperty Name="HOMEWORK" Relationship="FitAdvisorDBModel.FK__HOMEWORK__ID_COU__797309D9" FromRole="COURSE" ToRole="HOMEWORK" />
+        </EntityType>
+        <EntityType Name="INSTRUCTOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FULL_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="INSTRUCTOR_NUMBER" Type="Int32" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="INSTRUCTOR_COURSE" Relationship="Self.FK__INSTRUCTO__ID_IN__60A75C0F" FromRole="INSTRUCTOR" ToRole="INSTRUCTOR_COURSE" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK__USERS__INSTRUCTO__6383C8BA" FromRole="INSTRUCTOR" ToRole="USERS" />
+          <NavigationProperty Name="COMMUNITY_SERVICE" Relationship="FitAdvisorDBModel.FK__COMMUNITY__ID_IN__6FE99F9F" FromRole="INSTRUCTOR" ToRole="COMMUNITY_SERVICE" />
+          <NavigationProperty Name="HOMEWORK" Relationship="FitAdvisorDBModel.FK__HOMEWORK__ID_INS__778AC167" FromRole="INSTRUCTOR" ToRole="HOMEWORK" />
+          <NavigationProperty Name="MESSAGEs" Relationship="FitAdvisorDBModel.FK__MESSAGE__ID_INST__7E37BEF6" FromRole="INSTRUCTOR" ToRole="MESSAGE" />
+          <NavigationProperty Name="NOTEs" Relationship="FitAdvisorDBModel.FK__NOTE__ID_INSTRUC__7C4F7684" FromRole="INSTRUCTOR" ToRole="NOTE" />
+        </EntityType>
+        <EntityType Name="INSTRUCTOR_COURSE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_INSTRUCTOR" Type="Int32" />
+          <Property Name="ID_COURSE" Type="Int32" />
+          <Property Name="INSTRUCTOR_NOTE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="COURSE" Relationship="Self.FK__INSTRUCTO__ID_CO__619B8048" FromRole="INSTRUCTOR_COURSE" ToRole="COURSE" />
+          <NavigationProperty Name="INSTRUCTOR" Relationship="Self.FK__INSTRUCTO__ID_IN__60A75C0F" FromRole="INSTRUCTOR_COURSE" ToRole="INSTRUCTOR" />
+        </EntityType>
+        <EntityType Name="MESSAGE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_STUDENT" Type="Int32" Nullable="false" />
+          <Property Name="ID_INSTRUCTOR" Type="Int32" Nullable="false" />
+          <Property Name="MESSAGE1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="INSTRUCTOR" Relationship="FitAdvisorDBModel.FK__MESSAGE__ID_INST__7E37BEF6" FromRole="MESSAGE" ToRole="INSTRUCTOR" />
+          <NavigationProperty Name="STUDENT" Relationship="FitAdvisorDBModel.FK__MESSAGE__ID_STUD__7F2BE32F" FromRole="MESSAGE" ToRole="STUDENT" />
+          <Property Name="Reply" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="STUDENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FULL_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DEPARTMENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="STUDENT_NUMBER" Type="Int32" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="STUDENT_COURSE" Relationship="Self.FK__STUDENT_C__ID_ST__5FB337D6" FromRole="STUDENT" ToRole="STUDENT_COURSE" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK__USERS__STUDENT_I__628FA481" FromRole="STUDENT" ToRole="USERS" />
+          <NavigationProperty Name="COMMUNITY_SERVICE" Relationship="FitAdvisorDBModel.FK__COMMUNITY__ID_ST__70DDC3D8" FromRole="STUDENT" ToRole="COMMUNITY_SERVICE" />
+          <NavigationProperty Name="EXAMS_SCHEDULE" Relationship="FitAdvisorDBModel.FK__EXAMS_SCH__ID_ST__74AE54BC" FromRole="STUDENT" ToRole="EXAMS_SCHEDULE" />
+          <NavigationProperty Name="HOMEWORK" Relationship="FitAdvisorDBModel.FK__HOMEWORK__ID_STU__787EE5A0" FromRole="STUDENT" ToRole="HOMEWORK" />
+          <NavigationProperty Name="MESSAGEs" Relationship="FitAdvisorDBModel.FK__MESSAGE__ID_STUD__7F2BE32F" FromRole="STUDENT" ToRole="MESSAGE" />
+          <NavigationProperty Name="NOTEs" Relationship="FitAdvisorDBModel.FK__NOTE__ID_STUDENT__7D439ABD" FromRole="STUDENT" ToRole="NOTE" />
+        </EntityType>
+        <EntityType Name="STUDENT_COURSE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_STUDENT" Type="Int32" />
+          <Property Name="ID_COURSE" Type="Int32" />
+          <Property Name="MAEKS" Type="Int32" Nullable="false" />
+          <Property Name="ABSSENCE" Type="Int32" />
+          <NavigationProperty Name="COURSE" Relationship="Self.FK__STUDENT_C__ID_CO__5EBF139D" FromRole="STUDENT_COURSE" ToRole="COURSE" />
+          <NavigationProperty Name="STUDENT" Relationship="Self.FK__STUDENT_C__ID_ST__5FB337D6" FromRole="STUDENT_COURSE" ToRole="STUDENT" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="STUDENT_ID" Type="Int32" />
+          <Property Name="INSTRUCTOR_ID" Type="Int32" />
+          <NavigationProperty Name="INSTRUCTOR" Relationship="Self.FK__USERS__INSTRUCTO__6383C8BA" FromRole="USERS" ToRole="INSTRUCTOR" />
+          <NavigationProperty Name="STUDENT" Relationship="Self.FK__USERS__STUDENT_I__628FA481" FromRole="USERS" ToRole="STUDENT" />
+        </EntityType>
+        <Association Name="FK__INSTRUCTO__ID_CO__619B8048">
+          <End Role="COURSE" Type="Self.COURSE" Multiplicity="0..1" />
+          <End Role="INSTRUCTOR_COURSE" Type="Self.INSTRUCTOR_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INSTRUCTOR_COURSE">
+              <PropertyRef Name="ID_COURSE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENT_C__ID_CO__5EBF139D">
+          <End Role="COURSE" Type="Self.COURSE" Multiplicity="0..1" />
+          <End Role="STUDENT_COURSE" Type="Self.STUDENT_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STUDENT_COURSE">
+              <PropertyRef Name="ID_COURSE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INSTRUCTO__ID_IN__60A75C0F">
+          <End Role="INSTRUCTOR" Type="Self.INSTRUCTOR" Multiplicity="0..1" />
+          <End Role="INSTRUCTOR_COURSE" Type="Self.INSTRUCTOR_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INSTRUCTOR_COURSE">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__INSTRUCTO__6383C8BA">
+          <End Role="INSTRUCTOR" Type="Self.INSTRUCTOR" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="INSTRUCTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENT_C__ID_ST__5FB337D6">
+          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="0..1" />
+          <End Role="STUDENT_COURSE" Type="Self.STUDENT_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STUDENT_COURSE">
+              <PropertyRef Name="ID_STUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__STUDENT_I__628FA481">
+          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FitAdvisorDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="COURSEs" EntityType="Self.COURSE" />
+          <EntitySet Name="INSTRUCTORs" EntityType="Self.INSTRUCTOR" />
+          <EntitySet Name="INSTRUCTOR_COURSE" EntityType="Self.INSTRUCTOR_COURSE" />
+          <EntitySet Name="MESSAGEs" EntityType="Self.MESSAGE" />
+          <EntitySet Name="STUDENTs" EntityType="Self.STUDENT" />
+          <EntitySet Name="STUDENT_COURSE" EntityType="Self.STUDENT_COURSE" />
+          <EntitySet Name="Tables" EntityType="Self.Table" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <AssociationSet Name="FK__INSTRUCTO__ID_CO__619B8048" Association="Self.FK__INSTRUCTO__ID_CO__619B8048">
+            <End Role="COURSE" EntitySet="COURSEs" />
+            <End Role="INSTRUCTOR_COURSE" EntitySet="INSTRUCTOR_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENT_C__ID_CO__5EBF139D" Association="Self.FK__STUDENT_C__ID_CO__5EBF139D">
+            <End Role="COURSE" EntitySet="COURSEs" />
+            <End Role="STUDENT_COURSE" EntitySet="STUDENT_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INSTRUCTO__ID_IN__60A75C0F" Association="Self.FK__INSTRUCTO__ID_IN__60A75C0F">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTORs" />
+            <End Role="INSTRUCTOR_COURSE" EntitySet="INSTRUCTOR_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERS__INSTRUCTO__6383C8BA" Association="Self.FK__USERS__INSTRUCTO__6383C8BA">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTORs" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENT_C__ID_ST__5FB337D6" Association="Self.FK__STUDENT_C__ID_ST__5FB337D6">
+            <End Role="STUDENT" EntitySet="STUDENTs" />
+            <End Role="STUDENT_COURSE" EntitySet="STUDENT_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERS__STUDENT_I__628FA481" Association="Self.FK__USERS__STUDENT_I__628FA481">
+            <End Role="STUDENT" EntitySet="STUDENTs" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <EntitySet Name="COMMUNITY_SERVICE" EntityType="FitAdvisorDBModel.COMMUNITY_SERVICE" />
+          <EntitySet Name="EXAMS_SCHEDULE" EntityType="FitAdvisorDBModel.EXAMS_SCHEDULE" />
+          <EntitySet Name="HOMEWORK" EntityType="FitAdvisorDBModel.HOMEWORK" />
+          <EntitySet Name="NOTEs" EntityType="FitAdvisorDBModel.NOTE" />
+          <AssociationSet Name="FK__COMMUNITY__ID_IN__6FE99F9F" Association="FitAdvisorDBModel.FK__COMMUNITY__ID_IN__6FE99F9F">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTORs" />
+            <End Role="COMMUNITY_SERVICE" EntitySet="COMMUNITY_SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COMMUNITY__ID_ST__70DDC3D8" Association="FitAdvisorDBModel.FK__COMMUNITY__ID_ST__70DDC3D8">
+            <End Role="STUDENT" EntitySet="STUDENTs" />
+            <End Role="COMMUNITY_SERVICE" EntitySet="COMMUNITY_SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EXAMS_SCH__ID_CO__73BA3083" Association="FitAdvisorDBModel.FK__EXAMS_SCH__ID_CO__73BA3083">
+            <End Role="COURSE" EntitySet="COURSEs" />
+            <End Role="EXAMS_SCHEDULE" EntitySet="EXAMS_SCHEDULE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOMEWORK__ID_COU__797309D9" Association="FitAdvisorDBModel.FK__HOMEWORK__ID_COU__797309D9">
+            <End Role="COURSE" EntitySet="COURSEs" />
+            <End Role="HOMEWORK" EntitySet="HOMEWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EXAMS_SCH__ID_ST__74AE54BC" Association="FitAdvisorDBModel.FK__EXAMS_SCH__ID_ST__74AE54BC">
+            <End Role="STUDENT" EntitySet="STUDENTs" />
+            <End Role="EXAMS_SCHEDULE" EntitySet="EXAMS_SCHEDULE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOMEWORK__ID_INS__778AC167" Association="FitAdvisorDBModel.FK__HOMEWORK__ID_INS__778AC167">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTORs" />
+            <End Role="HOMEWORK" EntitySet="HOMEWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOMEWORK__ID_STU__787EE5A0" Association="FitAdvisorDBModel.FK__HOMEWORK__ID_STU__787EE5A0">
+            <End Role="STUDENT" EntitySet="STUDENTs" />
+            <End Role="HOMEWORK" EntitySet="HOMEWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MESSAGE__ID_INST__7E37BEF6" Association="FitAdvisorDBModel.FK__MESSAGE__ID_INST__7E37BEF6">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTORs" />
+            <End Role="MESSAGE" EntitySet="MESSAGEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NOTE__ID_INSTRUC__7C4F7684" Association="FitAdvisorDBModel.FK__NOTE__ID_INSTRUC__7C4F7684">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTORs" />
+            <End Role="NOTE" EntitySet="NOTEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MESSAGE__ID_STUD__7F2BE32F" Association="FitAdvisorDBModel.FK__MESSAGE__ID_STUD__7F2BE32F">
+            <End Role="STUDENT" EntitySet="STUDENTs" />
+            <End Role="MESSAGE" EntitySet="MESSAGEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NOTE__ID_STUDENT__7D439ABD" Association="FitAdvisorDBModel.FK__NOTE__ID_STUDENT__7D439ABD">
+            <End Role="STUDENT" EntitySet="STUDENTs" />
+            <End Role="NOTE" EntitySet="NOTEs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="COMMUNITY_SERVICE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="HOURS_PASSED" Type="Int32" />
+          <Property Name="ACTIVITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_INSTRUCTOR" Type="Int32" Nullable="false" />
+          <Property Name="ID_STUDENT" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="INSTRUCTOR" Relationship="FitAdvisorDBModel.FK__COMMUNITY__ID_IN__6FE99F9F" FromRole="COMMUNITY_SERVICE" ToRole="INSTRUCTOR" />
+          <NavigationProperty Name="STUDENT" Relationship="FitAdvisorDBModel.FK__COMMUNITY__ID_ST__70DDC3D8" FromRole="COMMUNITY_SERVICE" ToRole="STUDENT" />
+        </EntityType>
+        <EntityType Name="EXAMS_SCHEDULE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ID_STUDENT" Type="Int32" Nullable="false" />
+          <Property Name="ID_COURSE" Type="Int32" Nullable="false" />
+          <Property Name="TIME" Type="DateTime" Precision="3" />
+          <Property Name="COURSE_NAME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CLASS_NUMBER" Type="Int32" />
+          <NavigationProperty Name="COURSE" Relationship="FitAdvisorDBModel.FK__EXAMS_SCH__ID_CO__73BA3083" FromRole="EXAMS_SCHEDULE" ToRole="COURSE" />
+          <NavigationProperty Name="STUDENT" Relationship="FitAdvisorDBModel.FK__EXAMS_SCH__ID_ST__74AE54BC" FromRole="EXAMS_SCHEDULE" ToRole="STUDENT" />
+        </EntityType>
+        <EntityType Name="HOMEWORK">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ASSIGNMENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_INSTRUCTOR" Type="Int32" Nullable="false" />
+          <Property Name="ID_STUDENT" Type="Int32" Nullable="false" />
+          <Property Name="ID_COURSE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="COURSE" Relationship="FitAdvisorDBModel.FK__HOMEWORK__ID_COU__797309D9" FromRole="HOMEWORK" ToRole="COURSE" />
+          <NavigationProperty Name="INSTRUCTOR" Relationship="FitAdvisorDBModel.FK__HOMEWORK__ID_INS__778AC167" FromRole="HOMEWORK" ToRole="INSTRUCTOR" />
+          <NavigationProperty Name="STUDENT" Relationship="FitAdvisorDBModel.FK__HOMEWORK__ID_STU__787EE5A0" FromRole="HOMEWORK" ToRole="STUDENT" />
+        </EntityType>
+        <EntityType Name="NOTE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOTES" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_INSTRUCTOR" Type="Int32" Nullable="false" />
+          <Property Name="ID_STUDENT" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="INSTRUCTOR" Relationship="FitAdvisorDBModel.FK__NOTE__ID_INSTRUC__7C4F7684" FromRole="NOTE" ToRole="INSTRUCTOR" />
+          <NavigationProperty Name="STUDENT" Relationship="FitAdvisorDBModel.FK__NOTE__ID_STUDENT__7D439ABD" FromRole="NOTE" ToRole="STUDENT" />
+        </EntityType>
+        <Association Name="FK__COMMUNITY__ID_IN__6FE99F9F">
+          <End Type="FitAdvisorDBModel.INSTRUCTOR" Role="INSTRUCTOR" Multiplicity="1" />
+          <End Type="FitAdvisorDBModel.COMMUNITY_SERVICE" Role="COMMUNITY_SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMMUNITY_SERVICE">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COMMUNITY__ID_ST__70DDC3D8">
+          <End Type="FitAdvisorDBModel.STUDENT" Role="STUDENT" Multiplicity="1" />
+          <End Type="FitAdvisorDBModel.COMMUNITY_SERVICE" Role="COMMUNITY_SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMMUNITY_SERVICE">
+              <PropertyRef Name="ID_STUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EXAMS_SCH__ID_CO__73BA3083">
+          <End Type="FitAdvisorDBModel.COURSE" Role="COURSE" Multiplicity="1" />
+          <End Type="FitAdvisorDBModel.EXAMS_SCHEDULE" Role="EXAMS_SCHEDULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EXAMS_SCHEDULE">
+              <PropertyRef Name="ID_COURSE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOMEWORK__ID_COU__797309D9">
+          <End Type="FitAdvisorDBModel.COURSE" Role="COURSE" Multiplicity="1" />
+          <End Type="FitAdvisorDBModel.HOMEWORK" Role="HOMEWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOMEWORK">
+              <PropertyRef Name="ID_COURSE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EXAMS_SCH__ID_ST__74AE54BC">
+          <End Type="FitAdvisorDBModel.STUDENT" Role="STUDENT" Multiplicity="1" />
+          <End Type="FitAdvisorDBModel.EXAMS_SCHEDULE" Role="EXAMS_SCHEDULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EXAMS_SCHEDULE">
+              <PropertyRef Name="ID_STUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOMEWORK__ID_INS__778AC167">
+          <End Type="FitAdvisorDBModel.INSTRUCTOR" Role="INSTRUCTOR" Multiplicity="1" />
+          <End Type="FitAdvisorDBModel.HOMEWORK" Role="HOMEWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOMEWORK">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOMEWORK__ID_STU__787EE5A0">
+          <End Type="FitAdvisorDBModel.STUDENT" Role="STUDENT" Multiplicity="1" />
+          <End Type="FitAdvisorDBModel.HOMEWORK" Role="HOMEWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOMEWORK">
+              <PropertyRef Name="ID_STUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MESSAGE__ID_INST__7E37BEF6">
+          <End Type="FitAdvisorDBModel.INSTRUCTOR" Role="INSTRUCTOR" Multiplicity="1" />
+          <End Type="FitAdvisorDBModel.MESSAGE" Role="MESSAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MESSAGE">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NOTE__ID_INSTRUC__7C4F7684">
+          <End Type="FitAdvisorDBModel.INSTRUCTOR" Role="INSTRUCTOR" Multiplicity="1" />
+          <End Type="FitAdvisorDBModel.NOTE" Role="NOTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NOTE">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MESSAGE__ID_STUD__7F2BE32F">
+          <End Type="FitAdvisorDBModel.STUDENT" Role="STUDENT" Multiplicity="1" />
+          <End Type="FitAdvisorDBModel.MESSAGE" Role="MESSAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MESSAGE">
+              <PropertyRef Name="ID_STUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NOTE__ID_STUDENT__7D439ABD">
+          <End Type="FitAdvisorDBModel.STUDENT" Role="STUDENT" Multiplicity="1" />
+          <End Type="FitAdvisorDBModel.NOTE" Role="NOTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NOTE">
+              <PropertyRef Name="ID_STUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FitAdvisorDBModelStoreContainer" CdmEntityContainer="FitAdvisorDBEntities1">
+          <EntitySetMapping Name="COURSEs">
+            <EntityTypeMapping TypeName="FitAdvisorDBModel.COURSE">
+              <MappingFragment StoreEntitySet="COURSE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="CREDIT_HOURS" ColumnName="CREDIT_HOURS" />
+                <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+                <ScalarProperty Name="COURSE_NUMBER" ColumnName="COURSE_NUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSTRUCTORs">
+            <EntityTypeMapping TypeName="FitAdvisorDBModel.INSTRUCTOR">
+              <MappingFragment StoreEntitySet="INSTRUCTOR">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+                <ScalarProperty Name="INSTRUCTOR_NUMBER" ColumnName="INSTRUCTOR_NUMBER" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSTRUCTOR_COURSE">
+            <EntityTypeMapping TypeName="FitAdvisorDBModel.INSTRUCTOR_COURSE">
+              <MappingFragment StoreEntitySet="INSTRUCTOR_COURSE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_INSTRUCTOR" ColumnName="ID_INSTRUCTOR" />
+                <ScalarProperty Name="ID_COURSE" ColumnName="ID_COURSE" />
+                <ScalarProperty Name="INSTRUCTOR_NOTE" ColumnName="INSTRUCTOR_NOTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MESSAGEs">
+            <EntityTypeMapping TypeName="FitAdvisorDBModel.MESSAGE">
+              <MappingFragment StoreEntitySet="MESSAGE">
+                <ScalarProperty Name="Reply" ColumnName="Reply" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_STUDENT" ColumnName="ID_STUDENT" />
+                <ScalarProperty Name="ID_INSTRUCTOR" ColumnName="ID_INSTRUCTOR" />
+                <ScalarProperty Name="MESSAGE1" ColumnName="MESSAGE" />
+                <ScalarProperty Name="TIME" ColumnName="TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUDENTs">
+            <EntityTypeMapping TypeName="FitAdvisorDBModel.STUDENT">
+              <MappingFragment StoreEntitySet="STUDENT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+                <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+                <ScalarProperty Name="STUDENT_NUMBER" ColumnName="STUDENT_NUMBER" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUDENT_COURSE">
+            <EntityTypeMapping TypeName="FitAdvisorDBModel.STUDENT_COURSE">
+              <MappingFragment StoreEntitySet="STUDENT_COURSE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_STUDENT" ColumnName="ID_STUDENT" />
+                <ScalarProperty Name="ID_COURSE" ColumnName="ID_COURSE" />
+                <ScalarProperty Name="MAEKS" ColumnName="MAEKS" />
+                <ScalarProperty Name="ABSSENCE" ColumnName="ABSSENCE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="FitAdvisorDBModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="FitAdvisorDBModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="INSTRUCTOR_ID" ColumnName="INSTRUCTOR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMUNITY_SERVICE">
+            <EntityTypeMapping TypeName="FitAdvisorDBModel.COMMUNITY_SERVICE">
+              <MappingFragment StoreEntitySet="COMMUNITY_SERVICE">
+                <ScalarProperty Name="ID_STUDENT" ColumnName="ID_STUDENT" />
+                <ScalarProperty Name="ID_INSTRUCTOR" ColumnName="ID_INSTRUCTOR" />
+                <ScalarProperty Name="ACTIVITY" ColumnName="ACTIVITY" />
+                <ScalarProperty Name="HOURS_PASSED" ColumnName="HOURS_PASSED" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXAMS_SCHEDULE">
+            <EntityTypeMapping TypeName="FitAdvisorDBModel.EXAMS_SCHEDULE">
+              <MappingFragment StoreEntitySet="EXAMS_SCHEDULE">
+                <ScalarProperty Name="CLASS_NUMBER" ColumnName="CLASS_NUMBER" />
+                <ScalarProperty Name="COURSE_NAME" ColumnName="COURSE_NAME" />
+                <ScalarProperty Name="TIME" ColumnName="TIME" />
+                <ScalarProperty Name="ID_COURSE" ColumnName="ID_COURSE" />
+                <ScalarProperty Name="ID_STUDENT" ColumnName="ID_STUDENT" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOMEWORK">
+            <EntityTypeMapping TypeName="FitAdvisorDBModel.HOMEWORK">
+              <MappingFragment StoreEntitySet="HOMEWORK">
+                <ScalarProperty Name="ID_COURSE" ColumnName="ID_COURSE" />
+                <ScalarProperty Name="ID_STUDENT" ColumnName="ID_STUDENT" />
+                <ScalarProperty Name="ID_INSTRUCTOR" ColumnName="ID_INSTRUCTOR" />
+                <ScalarProperty Name="ASSIGNMENT" ColumnName="ASSIGNMENT" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOTEs">
+            <EntityTypeMapping TypeName="FitAdvisorDBModel.NOTE">
+              <MappingFragment StoreEntitySet="NOTE">
+                <ScalarProperty Name="ID_STUDENT" ColumnName="ID_STUDENT" />
+                <ScalarProperty Name="ID_INSTRUCTOR" ColumnName="ID_INSTRUCTOR" />
+                <ScalarProperty Name="TIME" ColumnName="TIME" />
+                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

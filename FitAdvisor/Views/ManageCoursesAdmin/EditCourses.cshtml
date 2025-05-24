@@ -1,0 +1,36 @@
+﻿@model FitAdvisor.Models.COURSE
+
+<h2>Edit Studen</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.ID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NAME)
+        @Html.TextBoxFor(model => model.NAME, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CREDIT_HOURS)
+        @Html.TextBoxFor(model => model.CREDIT_HOURS, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DEPARTMENT)
+        @Html.TextBoxFor(model => model.DEPARTMENT, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.COURSE_NUMBER)
+        @Html.TextBoxFor(model => model.COURSE_NUMBER, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

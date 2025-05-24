@@ -1,0 +1,33 @@
+﻿@model List<FitAdvisor.Models.STUDENT_COURSE>
+
+@{
+    ViewBag.Title = "My Attendance";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // You can adjust the layout path as needed
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (Model.Count == 0)
+{
+    <p>No Attendance records found.</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>Course</th>
+            <th>Absence</th>
+        </tr>
+        @foreach (var record in Model)
+        {
+            <tr>
+                <td>@record.COURSE.NAME</td>
+                <td>@record.ABSSENCE</td>
+            </tr>
+        }
+    </table>
+}
+
+<div class="form-group">
+    @Html.ActionLink("Back to Dashboard", "Index", "Home", null, new { @class = "btn btn-default" })
+</div>

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title  FIT-ADVISOR </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/menu.js"></script>
+    @*<link rel="stylesheet" href="./st">*@
+    <style>
+        nav {
+            background: #0575E6;
+            background: -webkit-linear-gradient(to right, #021B79, #0575E6);
+            background: linear-gradient(to right, #021B79, #0575E6);
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            /* Set the text color for the default navbar links */
+        }
+
+        #dynamic-menu .nav-link {
+            color: white;
+            /* Set the text color for the dynamically added menu items */
+        }
+    </style>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark">
+        <div class="container">
+            @Html.ActionLink("Fit Advisor", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav flex-grow-1" id="dynamic-menu" data-username="@Request.Cookies["UsernameCookie"].Value" data-userid="@Request.Cookies["UserIDCookie"].Value">
+                    <li class="nav-item">
+                        @*@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
+                    </li>
+                    <!-- Add more navigation links as needed -->
+                </ul>
+                <ul class="navbar-nav"  id="right-nav">
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+        <p>&copy; @DateTime.Now.Year - FIT_ADVISOR</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        // Add the 'active' class to the clicked navigation link
+        $(document).ready(function () {
+            $('.nav-link').click(function () {
+                $('.nav-link').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+﻿@model List<FitAdvisor.Models.COURSE>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /* Add custom CSS styles here */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .btn-view {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .btn-edit {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-deactivate {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-add {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-link {
+        text-decoration: none;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        margin-right: 5px;
+        border-radius: 3px;
+    }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+</style>
+
+<div class="container">
+    <h2>Courses</h2>
+
+    @if (Model.Count == 0)
+    {
+        <p>No Courses found.</p>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Credit Hours</th>
+                <th>Department</th>
+                <th>Course Number</th>
+                <th>Instructor</th>
+                <th></th>
+            </tr>
+            @foreach (var course in Model)
+            {
+                <tr>
+                    <td>@course.ID</td>
+                    <td>@course.NAME</td>
+                    <td>@course.CREDIT_HOURS</td>
+                    <td>@course.DEPARTMENT</td>
+                    <td>@course.COURSE_NUMBER</td>
+                    @if (course.INSTRUCTOR_COURSE.FirstOrDefault() != null)
+                    {
+                        <td>@course.INSTRUCTOR_COURSE.FirstOrDefault().ID_INSTRUCTOR</td>
+
+}
+else
+                    {
+                        <td></td>
+                    }
+                    <td>
+                        <a href="@Url.Action("EditCourses", new { id = course.ID })" class="btn btn-view">Edit</a>
+                        <a href="@Url.Action("DeleteCourses", new { id = course.ID })" class="btn btn-deactivate">Delete</a>
+                        <a href="@Url.Action("EnrollCourses", new { id = course.ID })" class="btn btn-edit">Enroll</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+
+    <p><a href="@Url.Action("AddnewCourses")" class="btn btn-add">Add New Course</a></p>
+
+</div>

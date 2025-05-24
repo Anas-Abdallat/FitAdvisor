@@ -1,0 +1,15 @@
+﻿@model FitAdvisor.Models.COURSE
+
+<h2>Delete Course</h2>
+
+<p>Are you sure you want to delete the Course <strong>@Model.NAME</strong>?</p>
+
+@using (Html.BeginForm("DeleteCourseConfirmed", "ManageCoursesAdmin", new { id = Model.ID }))
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Confirm Deletaion</button>
+}
+
+<p>
+    @Html.ActionLink("Cancel", "Index")
+</p>

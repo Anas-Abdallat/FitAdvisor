@@ -1,0 +1,16 @@
+﻿
+@model string
+
+<ul class="navbar-nav flex-grow-1">
+    <li>@Html.ActionLink("Academic", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+    <li>@Html.ActionLink("Registration", "Registration", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+    <li>@Html.ActionLink("Personal", "Personal", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
+    @if (Model == "student" || Model == "instructor")
+    {
+        <li>@Html.ActionLink("Instructor", "Instructor", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+        <li>@Html.ActionLink("Manage Instructor", "ManageInstructor", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+        <li>@Html.ActionLink("Manage Student", "ManageStudent", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+        <li>@Html.ActionLink("Manage Courses", "ManageCourses", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+    }
+</ul>

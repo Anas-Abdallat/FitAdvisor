@@ -1,0 +1,36 @@
+﻿@model FitAdvisor.Models.INSTRUCTOR
+
+@{
+    ViewBag.Title = "Update My Information";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // You can adjust the layout path as needed
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FULL_NAME, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.FULL_NAME, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.FULL_NAME, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.INSTRUCTOR_NUMBER, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.INSTRUCTOR_NUMBER, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.INSTRUCTOR_NUMBER, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EMAIL, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Update Information" class="btn btn-primary" />
+        @Html.ActionLink("Back to Dashboard", "Index", "Home", null, new { @class = "btn btn-default" })
+    </div>
+}

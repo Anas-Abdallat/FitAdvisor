@@ -1,0 +1,21 @@
+﻿@model FitAdvisor.Models.COURSE
+
+@{
+    ViewBag.Title = "Enroll in Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Enroll in Course</h2>
+    <form action="@Url.Action("OnlineRegestraion", "Registraion", new { id = Model.ID })" method="post">
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            <label for="instructorId">Enter Your Student ID:</label>
+            <input type="text" class="form-control" id="studentId" name="studentId" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enroll</button>
+    </form>
+</div>
+

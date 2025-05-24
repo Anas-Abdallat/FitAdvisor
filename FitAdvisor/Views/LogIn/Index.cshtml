@@ -1,0 +1,173 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('~/Images/log-anas2.webp');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .left-image-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            text-align: center;
+        }
+
+        .login-image {
+            max-width: 100%;
+            height: auto;
+            width: 400px;
+            opacity: 0.9;
+        }
+
+        (max-width: 768px) {
+            .login-image {
+                width: 250px;
+            }
+        }
+
+        .jumbotron {
+            background-color: transparent;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .jumbotron h1 {
+            color: #E74C3C;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .form-horizontal.login-form {
+            max-width: 300px;
+            min-height: 300px;
+            margin: 0 auto;
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+            top: -50px; 
+        }
+
+        .imgcontainer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .login-container {
+            text-align: center;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="left-image-container">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+             alt="Login Image"
+             class="login-image" />
+    </div>
+
+    <div class="container">
+        <div class="row" style="margin-bottom: 100px; display: flex; justify-content: center;">
+            <label style="font-size: 26px; font-weight: bold; color: #fff;">Fit Advisor</label>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-push-6">
+
+                @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+
+                <form method="post" class="form-horizontal login-form">
+                    <div class="imgcontainer">
+                        <img src="~/Images/anas1-useravatar-loginform.jpg" alt="Avatar" class="avatar">
+                    </div>
+
+                    <div class="login-container">
+                        <h2 class="text-center">Login</h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userName">Username</label>
+                        <input type="text" name="userName" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

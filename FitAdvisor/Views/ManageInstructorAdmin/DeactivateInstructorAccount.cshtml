@@ -1,0 +1,15 @@
+﻿@model FitAdvisor.Models.INSTRUCTOR
+
+<h2>Deactivate Instructor</h2>
+
+<p>Are you sure you want to deactivate the instructor <strong>@Model.FULL_NAME</strong>?</p>
+
+@using (Html.BeginForm("DeactivateConfirmed", "ManageInstructorAdmin", new { id = Model.ID }))
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Confirm Deactivation</button>
+}
+
+<p>
+    @Html.ActionLink("Cancel", "Index")
+</p>

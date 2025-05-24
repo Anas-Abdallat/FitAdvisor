@@ -1,0 +1,26 @@
+﻿@model FitAdvisor.Models.INSTRUCTOR
+
+<h2>Instructor Details</h2>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <td>@Model.ID</td>
+    </tr>
+    <tr>
+        <th>Full Name</th>
+        <td>@Model.FULL_NAME</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.EMAIL</td>
+    </tr>
+    <tr>
+        <th>Instructor Number</th>
+        <td>@Model.INSTRUCTOR_NUMBER</td>
+    </tr>
+</table>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

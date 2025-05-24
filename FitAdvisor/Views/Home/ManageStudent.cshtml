@@ -1,0 +1,91 @@
+﻿<div class="container mt-5">
+    <!-- Admin Section -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-container">
+                <div class="card" id="AddnewStudents" onclick="redirectToController('/ManageStudentAdmin/index','AddnewStudents')">
+                    <div class="card-body">
+                        <div>
+                            <svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z" fill="#1C274C" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="card-title">Add new Students</h5>
+                            <p class="card-text">Click to Add new Students </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="ViewStudents" onclick="redirectToController('/ManageStudentAdmin/index','ViewStudents')">
+                    <div class="card-body">
+                        <div>
+                            <svg width="50px" height="50px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="48" height="48" fill="white" fill-opacity="0.01" />
+                                <rect x="8" y="4" width="32" height="40" rx="2" fill="#2F88FF" stroke="#000000" stroke-width="4" stroke-linejoin="round" />
+                                <path d="M21 14H33" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M21 24H33" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M21 34H33" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M15 16C16.1046 16 17 15.1046 17 14C17 12.8954 16.1046 12 15 12C13.8954 12 13 12.8954 13 14C13 15.1046 13.8954 16 15 16Z" fill="white" />
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M15 26C16.1046 26 17 25.1046 17 24C17 22.8954 16.1046 22 15 22C13.8954 22 13 22.8954 13 24C13 25.1046 13.8954 26 15 26Z" fill="white" />
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M15 36C16.1046 36 17 35.1046 17 34C17 32.8954 16.1046 32 15 32C13.8954 32 13 32.8954 13 34C13 35.1046 13.8954 36 15 36Z" fill="white" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="card-title">View Students</h5>
+                            <p class="card-text">Click to View Students</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="EditStudentsAccount" onclick="redirectToController('/ManageStudentAdmin/index','EditStudentsAccount')">
+                    <div class="card-body">
+                        <div>
+                            <svg fill="#000000" width="50px" height="50px" viewBox="0 0 24 24" id="edit-circle" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg" class="icon flat-color"><circle id="primary" cx="12" cy="12" r="10" style="fill: rgb(0, 0, 0);"></circle><path id="secondary" d="M20.91,4.5,19.5,3.09a2,2,0,0,0-2.83,0L10.24,9.51a1,1,0,0,0-.29.73L10,13a1,1,0,0,0,1,1l2.78.05h0a1,1,0,0,0,.71-.29l6.42-6.43A2,2,0,0,0,20.91,4.5Z" style="fill: rgb(44, 169, 188);"></path></svg>
+                        </div>
+                        <div>
+                            <h5 class="card-title">Edit Students Account</h5>
+                            <p class="card-text">Click to Edit Students Account</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="DeactivateStudentsAccount" onclick="redirectToController('/ManageStudentAdmin/index','DeactivateStudentsAccount')">
+                    <div class="card-body">
+                        <div>
+                            <svg width="50px" height="50px" viewBox="0 -0.19 20.414 20.414" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+
+                                <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+
+                                <g id="SVGRepo_iconCarrier"> <g id="delete-user-left-8" transform="translate(-1.586 -1.974)"> <path id="secondary" fill="#2a2c74" d="M11,17a6,6,0,0,0-3.4-5.4A6,6,0,1,1,19,9a5.94,5.94,0,0,1-1.34,3.77,1,1,0,0,0,.28,1.45A7,7,0,0,1,21,20a1,1,0,0,1-1,1H9.46A5.93,5.93,0,0,0,11,17Z" /> <line id="primary" x1="3" y2="3" transform="translate(3 15)" fill="none" stroke="#421414" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /> <line id="primary-2" data-name="primary" x2="3" y2="3" transform="translate(3 15)" fill="none" stroke="#421414" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /> <path id="primary-3" data-name="primary" d="M10,21H20a1,1,0,0,0,1-1,7,7,0,0,0-3.06-5.78,1,1,0,0,1-.28-1.45A5.94,5.94,0,0,0,19,9,6,6,0,0,0,7.08,8a5.9,5.9,0,0,0,.27,3" fill="none" stroke="#421414" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /> </g> </g>
+
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="card-title">Deactivate Students Account</h5>
+                            <p class="card-text">Click to Deactivate Students Account</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Admin Section -->
+
+</div>
+
+
+<script>
+    function redirectToController(url, cardId) {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.classList.remove('selected');
+        });
+
+        // Add "selected" class to the clicked card
+        const selectedCard = document.getElementById(cardId);
+        selectedCard.classList.add('selected');
+
+        window.location.href = url;
+    }
+</script>

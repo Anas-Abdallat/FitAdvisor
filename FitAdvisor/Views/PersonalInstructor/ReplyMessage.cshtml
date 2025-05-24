@@ -1,0 +1,26 @@
+﻿@model FitAdvisor.Models.MESSAGE
+
+<h2>Reply To Message</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.ID_INSTRUCTOR)
+    @Html.HiddenFor(model => model.ID_STUDENT)
+    @Html.HiddenFor(model => model.MESSAGE1)
+    @Html.HiddenFor(model => model.INSTRUCTOR)
+    @Html.HiddenFor(model => model.STUDENT)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Reply)
+        @Html.TextBoxFor(model => model.Reply, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

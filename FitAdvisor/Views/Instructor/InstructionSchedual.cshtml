@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Student Schedule";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Adjust layout as needed
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("DisplaySchedule", "Instructor", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.Label("instructorId", "instructor ID:", htmlAttributes: new { @class = "control-label" })
+        @Html.TextBox("instructorId", null, new { @class = "form-control" })
+        @Html.ValidationMessage("instructorId", "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Display" class="btn btn-primary" />
+    </div>
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+
+@if (Model != null && Model.Count > 0)
+{
+    <h3>instructor Course Schedule</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model)
+            {
+                <tr>
+                    <td>@course.COURSE.ID</td>
+                    <td>@course.COURSE.NAME</td>
+                    <td>@course.COURSE.CREDIT_HOURS</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

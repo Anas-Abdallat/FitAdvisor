@@ -1,0 +1,29 @@
+﻿@model FitAdvisor.Models.HOMEWORK
+
+@{
+    ViewBag.Title = "Manage Homework";
+}
+
+<h2>Manage Homework</h2>
+
+@using (Html.BeginForm("ManageHomeWork", "AcdemicInstructor", new { id = ViewBag.InstructorId }, FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.ID_INSTRUCTOR)
+
+    <div class="form-group">
+        @Html.Label("Select Course:")
+        @Html.DropDownList("courseId", new SelectList(ViewBag.Courses, "ID", "NAME"), "-- Select Course --", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Select Students:")
+        @Html.ListBox("studentIds", new MultiSelectList(ViewBag.Students, "ID", "FULL_NAME"), new { @class = "form-control", multiple = "multiple" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ASSIGNMENT)
+        @Html.TextAreaFor(model => model.ASSIGNMENT, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Homework</button>
+}
